@@ -18,6 +18,7 @@ jobs:
                 head_sha: '${{github.sha}}',
                 owner: "my-cool-test-org",
                 repo: "public-test-repo",
-                status: "failed",
+                status: "completed",
+                conclusion: "failure",
                 started_at: new Date()
             });
