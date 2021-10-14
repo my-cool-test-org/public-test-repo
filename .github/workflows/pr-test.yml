@@ -1,0 +1,23 @@
+name: Test Manual Check Run
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a non-actions check run
+        uses: actions/github-script@v4
+        with:
+          script: |
+            github.checks.create({
+                name: 'Failed check',
+                head_sha: '${{github.sha}}',
+                owner: "my-cool-test-org",
+                repo: "public-test-repo",
+                status: "failed",
+                started_at: new Date()
+            });
